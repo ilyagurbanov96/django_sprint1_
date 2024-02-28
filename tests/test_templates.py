@@ -49,7 +49,7 @@ def test_post_list(client, posts):
     url = '/'
     response = try_get_url(client, url)
     reversed_trunketed_post_texts = [
-        post['text'][:20] for post in posts
+        post['text'][:20] for post in reversed(posts)
     ]
     reversed_post_list_pattern = re.compile(
         r'[\s\S]+?'.join(reversed_trunketed_post_texts)
