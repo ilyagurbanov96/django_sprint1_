@@ -57,5 +57,5 @@ def test_post_list(client, posts):
     page_content = response.content.decode('utf-8')
     assert re.search(reversed_post_list_pattern, page_content), (
         f'Убедитесь, что на странице `{url}` выводится инвертированный список '
-        'постов из задания.'
+        'постов из задания. Проверка версии'
     )
