@@ -50,11 +50,11 @@ def index(request):
     return render(request, 'blog/index.html', {'index': reversed(posts)})
 
 
-def post_detail(request, pk):
+def post_detail(request, post_id):
     list_id = [post['id'] for post in posts]
-    if pk not in list_id:
-        raise Http404(f'Пост {pk} не найден.')
-    return render(request, 'blog/detail.html', {'post': posts[pk]})
+    if post_id not in list_id:
+        raise Http404(f'Пост {post_id} не найден.')
+    return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
 
 def category_posts(request, category_slug):
