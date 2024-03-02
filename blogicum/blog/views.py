@@ -1,5 +1,4 @@
 from django.http import Http404
-
 from django.shortcuts import render
 
 posts = [
@@ -45,14 +44,15 @@ posts = [
     },
 ]
 
+available_id = {post['id'] for post in posts}
+
 
 def index(request):
     return render(request, 'blog/index.html', {'index': reversed(posts)})
 
 
 def post_detail(request, post_id):
-    list_id = [post['id'] for post in posts]
-    if post_id not in list_id:
+    if post_id not in available_id:
         raise Http404(f'Пост {post_id} не найден.')
     return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
